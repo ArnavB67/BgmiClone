@@ -85,6 +85,26 @@ bind/16/name = &"IkLegTarget.r"
 bind/16/bone = -1
 bind/16/pose = Transform3D(-0.9970592, 0.07663493, 0, 0, 0, -1, -0.07663493, -0.9970592, 0, -0.16887313, -0.05899231, 0.04157953)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t5aa"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vgqql"]
+material = SubResource("StandardMaterial3D_6t5aa")
+size = Vector3(0.036, 0.36, 0.036)
+
+[sub_resource type="Curve" id="Curve_6t5aa"]
+_limits = [0.0, 1.2, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.20338982, 1.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_6t5aa"]
+offsets = PackedFloat32Array(0, 0.34236452, 1)
+colors = PackedColorArray(1, 0.9490196, 0.8, 1, 1, 0.4509804, 0.050980393, 1, 0.3019608, 0.050980393, 0, 0)
+
 [sub_resource type="Animation" id="Animation_bxrwa"]
 resource_name = "Default"
 length = 0.001
@@ -2023,27 +2043,15 @@ animation = &"PistolShoot"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8erm5"]
 animation = &"RifleShoot"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6t5aa"]
+animation = &"RifleIdle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f1ek2"]
 animation = &"PistolAim"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6t5aa"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Head", "Armature/Skeleton3D:LowerArm.l", "Armature/Skeleton3D:LowerArm.r", "Armature/Skeleton3D:UpperArm.l", "Armature/Skeleton3D:UpperArm.r"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ukyrk"]
-animation = &"RifleIdle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7dp3o"]
-animation = &"RifleRun"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_h4iuc"]
-min_space = 0.0
-blend_point_0/node = SubResource("AnimationNodeAnimation_ukyrk")
-blend_point_0/pos = 0.0
-blend_point_0/name = &"RifleIdle"
-blend_point_1/node = SubResource("AnimationNodeAnimation_7dp3o")
-blend_point_1/pos = 1.0
-blend_point_1/name = &"RifleRun"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgqql"]
 animation = &"Idle"
@@ -2095,7 +2103,7 @@ input_3/break_loop_at_end = false
 input_3/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ubmik"]
-graph_offset = Vector2(-689.71277, 109.04085)
+graph_offset = Vector2(-805.2661, 150.06015)
 nodes/output/position = Vector2(816, 336)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_x3wgy")
 nodes/BlendSpace1D/position = Vector2(64, 80)
@@ -2107,8 +2115,8 @@ nodes/PistolBlend/node = SubResource("AnimationNodeBlendSpace1D_pu2lt")
 nodes/PistolBlend/position = Vector2(-432, 192)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_f1ek2")
 nodes/Animation/position = Vector2(-768, 368)
-"nodes/BlendSpace1D 3/node" = SubResource("AnimationNodeBlendSpace1D_h4iuc")
-"nodes/BlendSpace1D 3/position" = Vector2(-528, 560)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_8erm5")
+"nodes/Animation 4/position" = Vector2(96, 864)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_x3wgy")
 "nodes/Animation 2/position" = Vector2(-768, 832)
 nodes/ActionOneShot/node = SubResource("AnimationNodeOneShot_6t5aa")
@@ -2117,9 +2125,30 @@ nodes/ActionTransition/node = SubResource("AnimationNodeTransition_fkybt")
 nodes/ActionTransition/position = Vector2(416, 528)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_3smsa")
 "nodes/Animation 3/position" = Vector2(80, 672)
-"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_8erm5")
-"nodes/Animation 4/position" = Vector2(96, 864)
-node_connections = [&"output", 0, &"ActionOneShot", &"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Transition", &"Transition", 0, &"PistolBlend", &"Transition", 1, &"Animation", &"Transition", 2, &"BlendSpace1D 3", &"Transition", 3, &"Animation 2", &"ActionOneShot", 0, &"Blend2", &"ActionOneShot", 1, &"ActionTransition", &"ActionTransition", 0, &"Animation 3", &"ActionTransition", 1, &"Animation 4"]
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_6t5aa")
+"nodes/Animation 5/position" = Vector2(-560, 576)
+node_connections = [&"output", 0, &"ActionOneShot", &"Blend2", 0, &"BlendSpace1D", &"Blend2", 1, &"Transition", &"Transition", 0, &"PistolBlend", &"Transition", 1, &"Animation", &"Transition", 2, &"Animation 5", &"Transition", 3, &"Animation 2", &"ActionOneShot", 0, &"Blend2", &"ActionOneShot", 1, &"ActionTransition", &"ActionTransition", 0, &"Animation 3", &"ActionTransition", 1, &"Animation 4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t5aa"]
+bg_color = Color(5.4147097e-07, 0.3062123, 1.92523e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0, 0.9017016, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6t5aa"]
+material = SubResource("StandardMaterial3D_6t5aa")
+size = Vector3(0.015, 0.18, 0.015)
+
+[sub_resource type="Gradient" id="Gradient_vgqql"]
+offsets = PackedFloat32Array(0, 0.34236452, 1)
+colors = PackedColorArray(1, 0.9490196, 0.8, 1, 1, 0.4509804, 0.050980393, 1, 0.3019608, 0.050980393, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbk8j"]
+albedo_color = Color(0.9490196, 0.54901963, 0.101960786, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubmik"]
+material = SubResource("StandardMaterial3D_sbk8j")
+size = Vector3(3.2, 0.3, 1.8)
 
 [node name="Player" type="CharacterBody3D" unique_id=1238268]
 script = ExtResource("1_cvnsp")
@@ -2133,7 +2162,7 @@ bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 3.3754168e-18, -3.3136748e-18, -3.3136748e-18, 0.9998296, 0.018459009, 3.3754172e-18, -0.018459009, 0.9998296, 0, 1.0113806, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(-1.2445281e-19, 0.97382313, 3.9182807e-10)
+bones/0/position = Vector3(-1.3442475e-20, 1.0073239, 1.6946474e-09)
 bones/0/rotation = Quaternion(-0.009229899, -1.6723444e-18, -1.6723444e-18, 0.9999575)
 bones/0/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/1/name = "Head"
@@ -2141,7 +2170,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0.9999966, -0.0019471885, -0.0017237717, 0.0014525998, 0.9680339, -0.2508157, 0.0021570546, 0.25081238, 0.9680333, 3.1988625e-25, 0.581935, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(3.1988625e-25, 0.581935, 0)
-bones/1/rotation = Quaternion(0.12642144, -0.0009780547, 0.0008568223, 0.9919758)
+bones/1/rotation = Quaternion(0.20381916, -0.001042232, 0.00077748863, 0.9790078)
 bones/1/scale = Vector3(0.99999994, 1.0000001, 1)
 bones/2/name = "Head.001"
 bones/2/parent = 1
@@ -2154,71 +2183,71 @@ bones/3/name = "UpperArm.l"
 bones/3/parent = 0
 bones/3/rest = Transform3D(-0.87623185, 0.48187533, -0.0034620746, -0.4818156, -0.8762038, -0.010950146, -0.008310079, -0.007926794, 0.9999341, 0.17802985, 0.50539833, -0.009101991)
 bones/3/enabled = true
-bones/3/position = Vector3(0.17802987, 0.5053984, -0.009101991)
-bones/3/rotation = Quaternion(-0.07476379, 0.6167557, 0.7797609, -0.07743186)
+bones/3/position = Vector3(0.17802136, 0.5046239, -0.008717449)
+bones/3/rotation = Quaternion(0.057110727, 0.44541228, 0.8862647, -0.11349568)
 bones/3/scale = Vector3(0.9999988, 0.9999998, 1)
 bones/4/name = "LowerArm.l"
 bones/4/parent = 3
 bones/4/rest = Transform3D(0.9911805, 0.12776633, -0.035168756, -0.13251787, 0.9550537, -0.26516303, -0.00029085574, 0.26748496, 0.96356195, 1.0811709e-07, 0.2808686, 1.1641532e-10)
 bones/4/enabled = true
 bones/4/position = Vector3(1.0811709e-07, 0.2808686, 1.1641532e-10)
-bones/4/rotation = Quaternion(0.16211876, 0.05866714, -0.26003885, 0.9500818)
+bones/4/rotation = Quaternion(0.4292241, 0.06725156, -0.29298517, 0.85170627)
 bones/4/scale = Vector3(0.9999999, 1, 0.99999994)
 bones/5/name = "UpperArm.r"
 bones/5/parent = 0
 bones/5/rest = Transform3D(-0.87623185, -0.48187533, 0.0034620746, 0.4818156, -0.8762038, -0.010950146, 0.008310079, -0.007926794, 0.9999341, -0.17802985, 0.50539833, -0.009101991)
 bones/5/enabled = true
-bones/5/position = Vector3(-0.17802987, 0.5053984, -0.009101991)
-bones/5/rotation = Quaternion(-0.0766122, -0.30563065, 0.7472094, 0.5851484)
+bones/5/position = Vector3(-0.17802134, 0.50617284, -0.009486533)
+bones/5/rotation = Quaternion(-0.08649228, 0.6631371, 0.736772, 0.099676326)
 bones/5/scale = Vector3(0.9999988, 0.9999998, 1)
 bones/6/name = "LowerArm.r"
 bones/6/parent = 5
 bones/6/rest = Transform3D(0.9911805, -0.12776633, 0.035168756, 0.13251787, 0.9550537, -0.26516303, 0.00029085574, 0.26748496, 0.96356195, -1.0811709e-07, 0.2808686, 1.1641532e-10)
 bones/6/enabled = true
 bones/6/position = Vector3(-1.0811709e-07, 0.2808686, 1.1641532e-10)
-bones/6/rotation = Quaternion(0.9435885, 0.04903771, 0.17085017, 0.27936783)
+bones/6/rotation = Quaternion(0.05884224, -0.038945336, 0.33218879, 0.94056976)
 bones/6/scale = Vector3(0.9999999, 1, 0.99999994)
 bones/7/name = "UpperLeg.L"
 bones/7/parent = 0
 bones/7/rest = Transform3D(-0.99728906, 0.07367869, -0.0007378001, -0.07367058, -0.9972482, -0.008309804, -0.001348035, -0.008232864, 0.9999652, 0.09219711, 0.014296096, -0.022487435)
 bones/7/enabled = true
 bones/7/position = Vector3(0.09219711, 0.014296096, -0.022487435)
-bones/7/rotation = Quaternion(0.06313978, 0.12680446, 0.98880094, -0.04697586)
+bones/7/rotation = Quaternion(0.066191666, 0.029223045, 0.99650806, -0.041670766)
 bones/7/scale = Vector3(1.0000219, 1.0000005, 1.0000001)
 bones/8/name = "LowerLeg.L"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.9999969, -0.0023845334, -0.000741501, 0.0024402041, 0.99617225, 0.08737763, 0.0005303079, -0.087379165, 0.996175, 2.228235e-08, 0.4470329, 2.8448994e-09)
 bones/8/enabled = true
 bones/8/position = Vector3(2.228235e-08, 0.4470329, 2.8448994e-09)
-bones/8/rotation = Quaternion(-0.2784026, -0.0003059281, 0.007686269, 0.96043366)
+bones/8/rotation = Quaternion(-0.10053525, -0.00031694822, 0.0027756193, 0.9949297)
 bones/8/scale = Vector3(1, 0.99999994, 1)
 bones/9/name = "Foot.l"
 bones/9/parent = 8
 bones/9/rest = Transform3D(0.99969685, -0.004866865, -0.024133977, -0.022849346, 0.18160401, -0.98310626, 0.009167472, 0.98335963, 0.18143778, -5.118636e-09, 0.5281693, 2.3283064e-10)
 bones/9/enabled = true
 bones/9/position = Vector3(-5.118636e-09, 0.5281693, 2.3283064e-10)
-bones/9/rotation = Quaternion(0.71799916, 0.046870936, -0.046845246, 0.6928823)
+bones/9/rotation = Quaternion(0.65775156, 0.043925717, -0.046833623, 0.7504933)
 bones/9/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/10/name = "UpperLeg.R"
 bones/10/parent = 0
 bones/10/rest = Transform3D(-0.99728906, -0.07367869, 0.0007378001, 0.07367058, -0.9972482, -0.008309804, 0.001348035, -0.008232864, 0.9999652, -0.09219711, 0.014296096, -0.022487435)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.09219711, 0.014296096, -0.022487435)
-bones/10/rotation = Quaternion(-0.14391096, 0.12916996, 0.9791953, 0.06149336)
+bones/10/rotation = Quaternion(-0.14804304, 0.03219394, 0.9872853, 0.04810903)
 bones/10/scale = Vector3(1.0000224, 1.0000005, 0.99999964)
 bones/11/name = "LowerLeg.R"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.9999969, 0.0023845334, 0.000741501, -0.0024402041, 0.99617225, 0.08737763, -0.0005303079, -0.087379165, 0.996175, -2.228235e-08, 0.4470329, 2.8448994e-09)
 bones/11/enabled = true
 bones/11/position = Vector3(-2.228235e-08, 0.4470329, 2.8448994e-09)
-bones/11/rotation = Quaternion(-0.2784026, 0.0003059285, -0.0076862625, 0.9604337)
+bones/11/rotation = Quaternion(-0.10053525, 0.00031693056, -0.0027756216, 0.9949297)
 bones/11/scale = Vector3(1, 0.99999994, 1)
 bones/12/name = "Foot.r"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.99969685, 0.004866865, 0.024133977, 0.022849346, 0.18160401, -0.98310626, -0.009167472, 0.98335963, 0.18143778, 5.118636e-09, 0.5281693, 2.3283064e-10)
 bones/12/enabled = true
 bones/12/position = Vector3(5.118636e-09, 0.5281693, 2.3283064e-10)
-bones/12/rotation = Quaternion(0.7112254, -0.11719802, 0.089390166, 0.6873372)
+bones/12/rotation = Quaternion(0.65147656, -0.110522315, 0.095051646, 0.7445323)
 bones/12/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/13/name = "IkLegPole.l"
 bones/13/parent = -1
@@ -2248,6 +2277,20 @@ bones/16/enabled = true
 bones/16/position = Vector3(-0.16519007, 0.054398835, -0.05899231)
 bones/16/rotation = Quaternion(-0.02711448, -0.7065868, 0.7065867, 0.02711448)
 bones/16/scale = Vector3(1.0000001, 1.0000001, 1)
+bones/17/name = "Hand.l"
+bones/17/parent = 4
+bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+bones/17/enabled = true
+bones/17/position = Vector3(0, 0.54, 0)
+bones/17/rotation = Quaternion(0, 0, 0, 1)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/name = "Hand.r"
+bones/18/parent = 6
+bones/18/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54, 0)
+bones/18/enabled = true
+bones/18/position = Vector3(0, 0.49, 0)
+bones/18/rotation = Quaternion(0, 0, 0, 1)
+bones/18/scale = Vector3(1, 1, 1)
 
 [node name="Cube" type="MeshInstance3D" parent="Model/Armature/Skeleton3D" unique_id=2071637449]
 mesh = SubResource("ArrayMesh_kd7t1")
@@ -2267,31 +2310,114 @@ secondary_limit_angle = 1.5707964
 secondary_damp_threshold = 1.0
 
 [node name="RightHandAttachment" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" unique_id=1169237341]
-transform = Transform3D(-0.5791861, 0.43849778, 0.68721366, 0.73718506, -0.07813054, 0.67115676, 0.3479931, 0.8953295, -0.27800256, -0.41048414, 1.440082, -0.17120418)
+transform = Transform3D(-0.91096085, 0.4059066, 0.0734026, 0.08175158, 0.0032422394, 0.9966474, 0.40430847, 0.9139081, -0.036137193, -0.2514936, 1.4899538, 0.2512585)
 bone_name = "LowerArm.r"
 bone_idx = 6
 
 [node name="Pistol" parent="Model/Armature/Skeleton3D/RightHandAttachment" unique_id=1503742323 instance=ExtResource("2_cvnsp")]
 transform = Transform3D(0.10000012, 0, 0, 0, -4.3711417e-09, -0.100000024, 0, 0.10000007, -4.37114e-09, -0.12909538, 0.57924443, -0.010579824)
-visible = false
+
+[node name="LeftHandGrip" type="Marker3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/Pistol" unique_id=1381381118]
+transform = Transform3D(0.9999358, 0.002547957, -0.011022806, -0.0015624342, 0.99607486, 0.08850039, 0.01120466, -0.0884777, 0.9960143, 1.1269703, 0.5859871, 0.7152271)
+
+[node name="PistolParticles" type="CPUParticles3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/Pistol" unique_id=244228360]
+transform = Transform3D(0.9999907, -0.0007123044, 0.0042506456, 0.0008558182, 0.9994302, -0.03373758, -0.004224509, 0.033740446, 0.99942154, 0.715, 1.26, -2.83)
+emitting = false
+amount = 36
+lifetime = 0.06
+one_shot = true
+explosiveness = 0.96
+randomness = 0.15
+local_coords = true
+mesh = SubResource("BoxMesh_vgqql")
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 18.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 35.0
+initial_velocity_max = 75.0
+damping_min = 45.0
+damping_max = 70.0
+scale_amount_curve = SubResource("Curve_6t5aa")
+color = Color(0.8952605, 0.46416098, 0.24129745, 1)
+color_ramp = SubResource("Gradient_6t5aa")
+
+[node name="PistolOmniLight" type="OmniLight3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/Pistol" unique_id=862601631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 1.225, -2.845)
+light_color = Color(1, 0.6, 0.2, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_attenuation = 2.0
 
 [node name="AK" parent="Model/Armature/Skeleton3D/RightHandAttachment" unique_id=1788642140 instance=ExtResource("3_6t5aa")]
 transform = Transform3D(0.14419016, 0.2527992, -0.0728153, -0.07011019, -0.04310682, -0.28848982, -0.25356242, 0.15567513, 0.038360745, 0.09603679, 0.6635567, 0.036754668)
+visible = false
 
-[node name="TwoBoneIK3D" type="TwoBoneIK3D" parent="Model/Armature/Skeleton3D" unique_id=1000859258]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-active = false
+[node name="LeftHandGrip" type="Marker3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/AK" unique_id=2048959911]
+transform = Transform3D(1, -6.0535967e-09, 0, -9.313226e-10, 1, 5.5879354e-09, 8.940697e-08, 2.2351742e-08, 1, 0.108700156, -0.013149738, -0.5277822)
+
+[node name="AkParticles" type="CPUParticles3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/AK" unique_id=465636554]
+transform = Transform3D(0.99999064, -0.0007122867, 0.0042506475, 0.0008558674, 0.9994301, -0.03373757, -0.0042245006, 0.03374046, 0.9994215, 0, 0, -2.235)
+emitting = false
+amount = 36
+lifetime = 0.06
+one_shot = true
+explosiveness = 0.96
+randomness = 0.15
+local_coords = true
+mesh = SubResource("BoxMesh_vgqql")
+particle_flag_align_y = true
+direction = Vector3(0, 0, -1)
+spread = 24.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 32.0
+damping_min = 45.0
+damping_max = 70.0
+scale_amount_curve = SubResource("Curve_6t5aa")
+color = Color(0.8952605, 0.46416098, 0.24129745, 1)
+color_ramp = SubResource("Gradient_6t5aa")
+
+[node name="AkOmniLight" type="OmniLight3D" parent="Model/Armature/Skeleton3D/RightHandAttachment/AK" unique_id=881580173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.23)
+light_color = Color(1, 0.6, 0.2, 1)
+light_energy = 0.0
+omni_attenuation = 2.0
+
+[node name="LeftHandIK" type="TwoBoneIK3D" parent="Model/Armature/Skeleton3D" unique_id=2085775361]
 setting_count = 1
-settings/0/target_node = NodePath("../LookAtModifier3D")
-settings/0/pole_node = NodePath("")
+settings/0/target_node = NodePath("../RightHandAttachment/AK/LeftHandGrip")
+settings/0/pole_node = NodePath("../../LeftElbowPole")
 settings/0/root_bone_name = "UpperArm.l"
 settings/0/root_bone = 3
 settings/0/middle_bone_name = "LowerArm.l"
 settings/0/middle_bone = 4
-settings/0/pole_direction = 0
-settings/0/end_bone_name = ""
-settings/0/end_bone = -1
+settings/0/pole_direction = 6
+settings/0/end_bone_name = "Hand.l"
+settings/0/end_bone = 17
 settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 2
+settings/0/end_bone/length = 0.0
+
+[node name="LeftHandIKPistol" type="TwoBoneIK3D" parent="Model/Armature/Skeleton3D" unique_id=1690472928]
+setting_count = 1
+settings/0/target_node = NodePath("../RightHandAttachment/Pistol/LeftHandGrip")
+settings/0/pole_node = NodePath("../../LeftElbowPole")
+settings/0/root_bone_name = "UpperArm.l"
+settings/0/root_bone = 3
+settings/0/middle_bone_name = "LowerArm.l"
+settings/0/middle_bone = 4
+settings/0/pole_direction = 6
+settings/0/end_bone_name = "Hand.l"
+settings/0/end_bone = 17
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 2
+settings/0/end_bone/length = 0.0
+
+[node name="LeftElbowPole" type="Marker3D" parent="Model/Armature" unique_id=2108365484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.3399512, 0.25)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Model" unique_id=1934699331]
 libraries/ = SubResource("AnimationLibrary_r4rlw")
@@ -2320,11 +2446,10 @@ tree_root = SubResource("AnimationNodeBlendTree_ubmik")
 anim_player = NodePath("../Model/AnimationPlayer")
 parameters/BlendSpace1D/blend_position = 0.0
 parameters/Blend2/blend_amount = 1.0
-parameters/Transition/current_state = "RifleAim"
+parameters/Transition/current_state = "PistolAim"
 parameters/Transition/transition_request = ""
-parameters/Transition/current_index = 3
+parameters/Transition/current_index = 1
 parameters/PistolBlend/blend_position = 0.0
-"parameters/BlendSpace1D 3/blend_position" = 0.0
 parameters/ActionOneShot/active = false
 parameters/ActionOneShot/internal_active = false
 parameters/ActionOneShot/request = 0
@@ -2348,4 +2473,133 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=1441662338]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="TopBar" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=2135479681]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+
+[node name="ZoneLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=974637447]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Safe Zone"
+
+[node name="AliveLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=570608866]
+layout_mode = 2
+text = "Alive: 1"
+
+[node name="KillsLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=628186704]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=863943331]
+layout_mode = 2
+
+[node name="BottomBar" type="VBoxContainer" parent="HUD/MarginContainer" unique_id=1401863257]
+layout_mode = 2
+size_flags_vertical = 8
+offset_transform_enabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="HUD/MarginContainer/BottomBar" unique_id=1601268064]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(-448.68, 0)
+offset_transform_scale = Vector2(0.18, 1)
+theme_override_colors/font_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_styles/background = SubResource("StyleBoxFlat_6t5aa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vgqql")
+value = 100.0
+
+[node name="HealthLabel" type="Label" parent="HUD/MarginContainer/BottomBar" unique_id=42294446]
+layout_mode = 2
+
+[node name="AmmoLabel" type="Label" parent="HUD/MarginContainer/BottomBar" unique_id=314627394]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="HUD/MarginContainer/BottomBar" unique_id=1882047652]
+layout_mode = 2
+
+[node name="EndPanel" type="PanelContainer" parent="HUD" unique_id=676202146]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/EndPanel" unique_id=2038860269]
+layout_mode = 2
+
+[node name="EndTitleLabel" type="Label" parent="HUD/EndPanel/VBoxContainer" unique_id=1929984479]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="HUD/EndPanel/VBoxContainer" unique_id=721383026]
+layout_mode = 2
+text = "Return To Lobby"
+
+[node name="RestartButton" type="Button" parent="HUD/EndPanel/VBoxContainer" unique_id=1773762748]
+layout_mode = 2
+
+[node name="InventoryPanel" type="Panel" parent="HUD" unique_id=906364537]
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryLabel" type="Label" parent="HUD/InventoryPanel" unique_id=1038801664]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 4.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+
+[node name="ImpactEffect" type="CPUParticles3D" parent="." unique_id=255334114]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.95
+mesh = SubResource("BoxMesh_6t5aa")
+direction = Vector3(0, 0, -1)
+spread = 40.0
+initial_velocity_min = 1.5
+initial_velocity_max = 4.0
+color_ramp = SubResource("Gradient_vgqql")
+
+[node name="ParachuteMesh" type="MeshInstance3D" parent="." unique_id=548873786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0)
+visible = false
+mesh = SubResource("BoxMesh_ubmik")
+
 [connection signal="skeleton_updated" from="Model/Armature/Skeleton3D" to="." method="_on_skeleton_3d_skeleton_updated"]
+[connection signal="pressed" from="HUD/EndPanel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

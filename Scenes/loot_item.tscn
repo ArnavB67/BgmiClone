@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bhwb0k6qt38v"]
+
+[ext_resource type="Script" uid="uid://hv1q01ckxqpc" path="res://Assets/loot_item.gd" id="1_f8x0t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ubmik"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbk8j"]
+albedo_color = Color(1, 1, 0.4117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ubmik"]
+material = SubResource("StandardMaterial3D_sbk8j")
+size = Vector3(1, 0.14782715, 1)
+
+[node name="LootItem" type="Area3D" unique_id=213353746]
+script = ExtResource("1_f8x0t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2032163730]
+shape = SubResource("SphereShape3D_ubmik")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1046611206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23553467, 0)
+mesh = SubResource("BoxMesh_ubmik")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
