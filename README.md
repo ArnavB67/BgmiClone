@@ -8,6 +8,8 @@
 
 Please Download The game from itch and try running it rather than playing the web build, Web build will give poor performance and lag.
 
+Video Demonstration : https://drive.google.com/file/d/1L-Q0CeJyzosedOUCPTIjGpblPfnu9skB/view?usp=sharing (High Quality)
+
 A 3D battle royale mini-game built from scratch in **Godot 4.7**, You drop from a plane onto an arena with AI bots, loot weapons and gear, stay inside the shrinking blue zone, and fight to be the last one standing.
 
 
