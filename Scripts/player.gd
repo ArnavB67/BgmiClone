@@ -429,6 +429,7 @@ func ShootRayCastAttack(MaxDistance,Damage,MuzzleNode):
 			var Distance=global_position.distance_to(HitPoint)
 			var FinalDamage=Damage*clamp(1.0-(Distance/MaxDistance)*0.4,0.5,1.0)
 			Collider.TakeDamage(FinalDamage)
+			
 		if CurrentWeapon!=Weapon.Melee:
 			ShowImpactEffect(HitPoint,HitPointNormal,Collider)
 			SpawnBulletDecal(HitPoint,HitPointNormal,Collider)
@@ -769,3 +770,7 @@ func ShowEndScreen(EndText: String) -> void:
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

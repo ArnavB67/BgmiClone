@@ -2162,7 +2162,7 @@ bones/0/name = "Body"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 3.3754168e-18, -3.3136748e-18, -3.3136748e-18, 0.9998296, 0.018459009, 3.3754172e-18, -0.018459009, 0.9998296, 0, 1.0113806, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(-1.3442475e-20, 1.0073239, 1.6946474e-09)
+bones/0/position = Vector3(-5.563443e-20, 0.9945912, 1.7652928e-09)
 bones/0/rotation = Quaternion(-0.009229899, -1.6723444e-18, -1.6723444e-18, 0.9999575)
 bones/0/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/1/name = "Head"
@@ -2183,8 +2183,8 @@ bones/3/name = "UpperArm.l"
 bones/3/parent = 0
 bones/3/rest = Transform3D(-0.87623185, 0.48187533, -0.0034620746, -0.4818156, -0.8762038, -0.010950146, -0.008310079, -0.007926794, 0.9999341, 0.17802985, 0.50539833, -0.009101991)
 bones/3/enabled = true
-bones/3/position = Vector3(0.17802136, 0.5046239, -0.008717449)
-bones/3/rotation = Quaternion(0.057110727, 0.44541228, 0.8862647, -0.11349568)
+bones/3/position = Vector3(0.17801245, 0.50381404, -0.0083154095)
+bones/3/rotation = Quaternion(0.055863243, 0.43628156, 0.8914049, -0.10924837)
 bones/3/scale = Vector3(0.9999988, 0.9999998, 1)
 bones/4/name = "LowerArm.l"
 bones/4/parent = 3
@@ -2197,8 +2197,8 @@ bones/5/name = "UpperArm.r"
 bones/5/parent = 0
 bones/5/rest = Transform3D(-0.87623185, -0.48187533, 0.0034620746, 0.4818156, -0.8762038, -0.010950146, 0.008310079, -0.007926794, 0.9999341, -0.17802985, 0.50539833, -0.009101991)
 bones/5/enabled = true
-bones/5/position = Vector3(-0.17802134, 0.50617284, -0.009486533)
-bones/5/rotation = Quaternion(-0.08649228, 0.6631371, 0.736772, 0.099676326)
+bones/5/position = Vector3(-0.17801246, 0.50698256, -0.009888576)
+bones/5/rotation = Quaternion(-0.08426269, 0.65566784, 0.74291694, 0.10523223)
 bones/5/scale = Vector3(0.9999988, 0.9999998, 1)
 bones/6/name = "LowerArm.r"
 bones/6/parent = 5
@@ -2212,42 +2212,42 @@ bones/7/parent = 0
 bones/7/rest = Transform3D(-0.99728906, 0.07367869, -0.0007378001, -0.07367058, -0.9972482, -0.008309804, -0.001348035, -0.008232864, 0.9999652, 0.09219711, 0.014296096, -0.022487435)
 bones/7/enabled = true
 bones/7/position = Vector3(0.09219711, 0.014296096, -0.022487435)
-bones/7/rotation = Quaternion(0.066191666, 0.029223045, 0.99650806, -0.041670766)
+bones/7/rotation = Quaternion(0.06460417, 0.07778314, 0.9938962, -0.04411866)
 bones/7/scale = Vector3(1.0000219, 1.0000005, 1.0000001)
 bones/8/name = "LowerLeg.L"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.9999969, -0.0023845334, -0.000741501, 0.0024402041, 0.99617225, 0.08737763, 0.0005303079, -0.087379165, 0.996175, 2.228235e-08, 0.4470329, 2.8448994e-09)
 bones/8/enabled = true
 bones/8/position = Vector3(2.228235e-08, 0.4470329, 2.8448994e-09)
-bones/8/rotation = Quaternion(-0.10053525, -0.00031694822, 0.0027756193, 0.9949297)
+bones/8/rotation = Quaternion(-0.189662, -0.0003127645, 0.005236275, 0.9818354)
 bones/8/scale = Vector3(1, 0.99999994, 1)
 bones/9/name = "Foot.l"
 bones/9/parent = 8
 bones/9/rest = Transform3D(0.99969685, -0.004866865, -0.024133977, -0.022849346, 0.18160401, -0.98310626, 0.009167472, 0.98335963, 0.18143778, -5.118636e-09, 0.5281693, 2.3283064e-10)
 bones/9/enabled = true
 bones/9/position = Vector3(-5.118636e-09, 0.5281693, 2.3283064e-10)
-bones/9/rotation = Quaternion(0.65775156, 0.043925717, -0.046833623, 0.7504933)
+bones/9/rotation = Quaternion(0.68828833, 0.045303658, -0.046627205, 0.72251827)
 bones/9/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/10/name = "UpperLeg.R"
 bones/10/parent = 0
 bones/10/rest = Transform3D(-0.99728906, -0.07367869, 0.0007378001, 0.07367058, -0.9972482, -0.008309804, 0.001348035, -0.008232864, 0.9999652, -0.09219711, 0.014296096, -0.022487435)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.09219711, 0.014296096, -0.022487435)
-bones/10/rotation = Quaternion(-0.14804304, 0.03219394, 0.9872853, 0.04810903)
+bones/10/rotation = Quaternion(-0.1460249, 0.080447674, 0.9844931, 0.054573767)
 bones/10/scale = Vector3(1.0000224, 1.0000005, 0.99999964)
 bones/11/name = "LowerLeg.R"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.9999969, 0.0023845334, 0.000741501, -0.0024402041, 0.99617225, 0.08737763, -0.0005303079, -0.087379165, 0.996175, -2.228235e-08, 0.4470329, 2.8448994e-09)
 bones/11/enabled = true
 bones/11/position = Vector3(-2.228235e-08, 0.4470329, 2.8448994e-09)
-bones/11/rotation = Quaternion(-0.10053525, 0.00031693056, -0.0027756216, 0.9949297)
+bones/11/rotation = Quaternion(-0.189662, 0.0003127528, -0.0052362685, 0.9818354)
 bones/11/scale = Vector3(1, 0.99999994, 1)
 bones/12/name = "Foot.r"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.99969685, 0.004866865, 0.024133977, 0.022849346, 0.18160401, -0.98310626, -0.009167472, 0.98335963, 0.18143778, 5.118636e-09, 0.5281693, 2.3283064e-10)
 bones/12/enabled = true
 bones/12/position = Vector3(5.118636e-09, 0.5281693, 2.3283064e-10)
-bones/12/rotation = Quaternion(0.65147656, -0.110522315, 0.095051646, 0.7445323)
+bones/12/rotation = Quaternion(0.68178284, -0.11382091, 0.09205896, 0.716758)
 bones/12/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/13/name = "IkLegPole.l"
 bones/13/parent = -1
@@ -2310,7 +2310,7 @@ secondary_limit_angle = 1.5707964
 secondary_damp_threshold = 1.0
 
 [node name="RightHandAttachment" type="BoneAttachment3D" parent="Model/Armature/Skeleton3D" unique_id=1169237341]
-transform = Transform3D(-0.91096085, 0.4059066, 0.0734026, 0.08175158, 0.0032422394, 0.9966474, 0.40430847, 0.9139081, -0.036137193, -0.2514936, 1.4899538, 0.2512585)
+transform = Transform3D(-0.9121458, 0.40156892, 0.082036085, 0.08125143, -0.019017138, 0.9965121, 0.40172926, 0.9156306, -0.01528161, -0.25296333, 1.4731125, 0.24996592)
 bone_name = "LowerArm.r"
 bone_idx = 6
 
@@ -2495,10 +2495,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Safe Zone"
 
-[node name="AliveLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=570608866]
-layout_mode = 2
-text = "Alive: 1"
-
 [node name="KillsLabel" type="Label" parent="HUD/MarginContainer/TopBar" unique_id=628186704]
 layout_mode = 2
 
@@ -2557,6 +2553,7 @@ text = "Return To Lobby"
 
 [node name="RestartButton" type="Button" parent="HUD/EndPanel/VBoxContainer" unique_id=1773762748]
 layout_mode = 2
+text = "Retry"
 
 [node name="InventoryPanel" type="Panel" parent="HUD" unique_id=906364537]
 custom_minimum_size = Vector2(400, 300)
@@ -2602,4 +2599,5 @@ visible = false
 mesh = SubResource("BoxMesh_ubmik")
 
 [connection signal="skeleton_updated" from="Model/Armature/Skeleton3D" to="." method="_on_skeleton_3d_skeleton_updated"]
+[connection signal="pressed" from="HUD/EndPanel/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="HUD/EndPanel/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

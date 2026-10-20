@@ -30,8 +30,11 @@ func _ready() -> void:
 	PickNewPatrolPoint()
 
 func _physics_process(delta: float) -> void:
+	if global_position.y < -20.0:
+		Die()
+		return
 	if not is_on_floor():
-		velocity+=get_gravity() * delta
+		velocity += get_gravity() * delta
 
 	FindTarget()
 	if not HasGun:
@@ -146,30 +149,43 @@ func HasLineOfSight(Target):
 func ShootAtTarget():
 	if not is_instance_valid(TargetNode):
 		return
-	# Apply realistic bot accuracy (70% hit chance)
-	var HitPosition = TargetNode.global_position+Vector3(randf_range(-0.6, 0.6), 1.0, randf_range(-0.6, 0.6))
-	if randf()<=0.70 and TargetNode.has_method("TakeDamage"):
-		TargetNode.TakeDamage(Damage)
-
-	var Player= get_tree().get_first_node_in_group("Player")
+	var HitPosition = TargetNode.global_position + Vector3(randf_range(-0.6, 0.6), 1.0, randf_range(-0.6, 0.6))
+	if randf() <= 0.70 and TargetNode.has_method("TakeDamage"):
+		TargetNode.TakeDamage(Damage, self)
+	var Player = get_tree().get_first_node_in_group("Player")
 	if Player and Player.has_method("SpawnBulletTracer"):
 		Player.SpawnBulletTracer(global_position + Vector3(0, 1.4, 0), HitPosition)
-
+		
 func PickNewPatrolPoint():
 	PatrolTarget= Vector3(randf_range(-70.0, 70.0), 1.0, randf_range(-70.0, 70.0))
 
-func TakeDamage(Damage):
-	Health-=Damage
+func TakeDamage(DamageAmount, Attacker = null):
+	Health -= DamageAmount
+	if Attacker and is_instance_valid(Attacker) and Attacker != self:
+		TargetNode = Attacker
+		CurrentState = EnemyFSM.Chase
 	if Health <= 0.0:
-		Die()
+		Die(Attacker)
 
-func Die() -> void:
+func Die(Killer = null) -> void:
+	if Health <= -999.0: # Prevent double-death trigger
+		return
+	Health = -1000.0
 	var LootScene = load("res://Scenes/loot_item.tscn")
 	if LootScene:
-		var Drop= LootScene.instantiate()
+		var Drop = LootScene.instantiate()
+		var DropOptions = ["AK", "Pistol", "Medkit", "Armour", "RifleAmmo"]
+		Drop.ItemType = DropOptions[randi() % DropOptions.size()]
 		get_tree().current_scene.add_child(Drop)
-		Drop.global_position= global_position + Vector3(0, 0.5, 0)
-	var Player =get_tree().get_first_node_in_group("Player")
-	if Player and Player.has_method("CheckWinner"):
-		Player.CheckWinner()
+		Drop.global_position = global_position + Vector3(0, 0.5, 0)
+	var Player = get_tree().get_first_node_in_group("Player")
+	if Player:
+		if Killer == Player and Player.has_method("AddKill"):
+			Player.AddKill()
+		if Player.has_method("CheckWinner"):
+			# Wait one frame so this bot is removed from the scene tree before counting Enemies
+			remove_from_group("Enemies")
+			Player.CheckWinner()
+	hide()
+	await get_tree().create_timer(1).timeout
 	queue_free()
